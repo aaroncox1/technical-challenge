@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
+use App\Models\Book;
 use App\Models\Collector;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<Collector>
+ * @extends Factory<Book>
  */
-final class CollectorFactory extends Factory
+final class BookFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,7 +21,9 @@ final class CollectorFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'title' => fake()->sentence(3),
+            'type' => fake()->randomElement(Book::getTypes()),
+            'collector_id' => Collector::factory(),
         ];
     }
 }

@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use App\Http\Resources\BookResource;
+use App\Models\Book;
 
 final class GetBookController
 {
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request): Response
+    public function __invoke(Book $book): BookResource
     {
-        return new Response('TODO: Implement this endpoint.');
+        return new BookResource($book);
     }
 }
